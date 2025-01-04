@@ -1,36 +1,39 @@
 package player
-import(
-	"ticTacToe/board/board"
+
+import (
 	"fmt"
+	"tictactoe/board"
 )
+
 type Player interface {
-	GetMove(b * board.Board ) int
+	GetMove(b *board.Board) int
 	GetSymbol() string
 }
 
-type HumanPlayer struct{
+type HumanPlayer struct {
 	symbol string
 }
 
-func newHumanPlayer(symbol string) * HumanPlayer{
+func NewHumanPlayer(symbol string) *HumanPlayer {
 	return &HumanPlayer{symbol: symbol}
 }
-func (p * HumanPlayer) GetSymbol() string {
+func (p *HumanPlayer) GetSymbol() string {
 	return p.symbol
 }
 
-func (p * HumanPlayer) GetMove(b * board.Board){
+func (p *HumanPlayer) GetMove(b *board.Board) int {
 	var position int
-	for{
+	for {
 		fmt.Println("Enter a position (0 - 8): ")
 		fmt.Scan(&position)
-		if board.isValidMove(*b, position){
-			board.makeMove(*b, position, p.symbol)
-			fmt.Println("Move added to cell %d.", position)
+		if board.IsValidMove(*b, position) {
+			board.MakeMove(*b, position, p.symbol)
+			fmt.Printf("Move added to cell %d. \n", position)
 			break
-		}else{
+		} else {
 			fmt.Println("Invalid move. Try again.")
 		}
 
 	}
+	return position
 }

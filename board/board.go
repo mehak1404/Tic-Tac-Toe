@@ -5,7 +5,7 @@ type Board struct{
 
 }
 
-func initializeBoard() Board{
+func InitializeBoard() Board{
 	var board Board;
 	for i := 0; i < 3; i++ {
 		for j := 0; j < 3; j++ {
@@ -15,7 +15,7 @@ func initializeBoard() Board{
 	return board;
 }
 
-func displayBoard(board Board){
+func DisplayBoard(board Board){
 	for i:= 0; i < 3; i++ {
 		for j:=0; j < 3; j++ {
 			print(board.cells[i][j]);
@@ -31,7 +31,7 @@ func displayBoard(board Board){
 	}
 } 
 
-func isValidMove(board Board, position int) bool{
+func IsValidMove(board Board, position int) bool{
 	row := position / 3;
 	col := position % 3;
 
@@ -41,7 +41,7 @@ func isValidMove(board Board, position int) bool{
 	return board.cells[row][col] == ".";
 }
 
-func makeMove(board Board, position int, player string) Board{
+func MakeMove(board Board, position int, player string) Board{
 	row := position / 3;
 	col := position % 3;
 
@@ -49,7 +49,7 @@ func makeMove(board Board, position int, player string) Board{
 	return board;
 }
 
-func checkWinner(board Board) (string, bool){
+func CheckWinner(board Board) (string, bool){
 	for i:= 0; i < 3; i++{
 		if board.cells[i][0] != "." && board.cells[i][0] == board.cells[i][1] && board.cells[i][1] == board.cells[i][2]{
 			return board.cells[i][0], true
@@ -68,7 +68,7 @@ func checkWinner(board Board) (string, bool){
 	return "", false
 }
 
-func isBoardFull(board Board) bool{
+func IsBoardFull(board Board) bool{
 	for i:= 0; i < 3; i++{
 		for j:= 0; j < 3; j++{
 			if board.cells[i][j] == "."{
@@ -79,7 +79,7 @@ func isBoardFull(board Board) bool{
 	return true
 }
 
-func removeMove(board Board, position int) Board{
+func RemoveMove(board Board, position int) Board{
 	row := position / 3;
 	col := position % 3;
 
