@@ -28,7 +28,7 @@ func (p *HumanPlayer) GetMove(b *board.Board) int {
 		fmt.Scan(&position)
 		if board.IsValidMove(*b, position) {
 			board.MakeMove(*b, position, p.symbol)
-			fmt.Printf("Move added to cell %d. \n", position)
+			fmt.Printf("Player Move added to cell %d. \n", position)
 			break
 		} else {
 			fmt.Println("Invalid move. Try again.")

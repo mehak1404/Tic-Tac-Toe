@@ -29,7 +29,7 @@ func (p *AIPlayer) GetMove(b *board.Board) int {
 			tempBoard = board.MakeMove(tempBoard, position, ".")
 			if is_winner {
 				board.MakeMove(*b, position, ai_symbol)
-				fmt.Printf("Move added to cell %d.\n", position)
+				fmt.Printf("AI made a winning move to cell %d.\n", position)
 				return position
 			}
 		}
@@ -50,7 +50,7 @@ func (p *AIPlayer) GetMove(b *board.Board) int {
 			tempBoard = board.MakeMove(tempBoard, position, ".")
 			if is_winner {
 				board.MakeMove(*b, position, ai_symbol)
-				fmt.Printf("Move added to cell %d \n", position)
+				fmt.Printf("Ai made a blocking move to cell %d \n", position)
 				return position
 			}
 		}
@@ -61,7 +61,7 @@ func (p *AIPlayer) GetMove(b *board.Board) int {
 	for _, position := range preferredMoves {
 		if board.IsValidMove(*b, position) {
 			board.MakeMove(*b, position, p.symbol)
-			fmt.Printf("AI chooses strategic position %d\n", position)
+			fmt.Printf("AI choose strategic position %d\n", position)
 			return position
 		}
 	}
